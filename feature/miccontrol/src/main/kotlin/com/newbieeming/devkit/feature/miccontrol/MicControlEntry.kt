@@ -1,5 +1,6 @@
 package com.newbieeming.devkit.feature.miccontrol
 
+import android.Manifest
 import android.content.Intent
 import android.provider.Settings
 import androidx.compose.runtime.Composable
@@ -34,8 +35,8 @@ class MicControlEntry : FeatureEntry {
             description = "控制系统全局麦克风静音(可拖拽)",
             modifier = modifier,
             badge = if (isServiceRunning) "已启用" else "未启用",
-            requiredPermissions = mapOf(
-                "悬浮窗" to Settings.canDrawOverlays(context)
+            requiredPermissions = listOf(
+                Manifest.permission.SYSTEM_ALERT_WINDOW
             ),
             onClick = {
                 if (Settings.canDrawOverlays(context)) {
