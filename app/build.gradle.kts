@@ -16,14 +16,28 @@ android {
     buildFeatures {
         buildConfig = true  // DevKitApplication 中使用 BuildConfig.DEBUG
     }
+
+    signingConfigs {
+        create("me") {
+            storeFile = file("../sign/newbieeming.jks")
+            storePassword = "newbieeming"
+            keyAlias = "newbieeming"
+            keyPassword = "newbieeming"
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.findByName("me")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+        }
+        debug {
+            signingConfig = signingConfigs.findByName("me")
         }
     }
 }
