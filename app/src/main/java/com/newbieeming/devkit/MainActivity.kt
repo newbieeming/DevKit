@@ -20,6 +20,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -69,7 +70,7 @@ private fun DevKitApp(
     ) {
         composable(DASHBOARD_ROUTE) {
             Scaffold(
-                topBar = { TopAppBar(title = { Text("DevKit") }) },
+                topBar = { TopAppBar(title = { Text(stringResource(R.string.app_name)) }) },
                 contentWindowInsets = WindowInsets(0),
             ) { innerPadding ->
                 FeatureDashboard(
@@ -133,5 +134,5 @@ private const val DASHBOARD_ROUTE = "dashboard"
 // 以 160dp 为基线，仅按比例吸收额外屏宽，避免宽屏卡片突然变得过宽。
 private const val TILE_WIDTH_REMAINDER_RATIO = 0.10f
 private val MIN_TILE_WIDTH = 130.dp
-private val GRID_PADDING  = 16.dp
-private val TILE_SPACING  = 12.dp
+private val GRID_PADDING = 16.dp
+private val TILE_SPACING = 12.dp
