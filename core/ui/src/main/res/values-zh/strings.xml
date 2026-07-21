@@ -1,0 +1,22 @@
+<resources>
+    <string name="permission_read_storage">读取存储</string>
+    <string name="permission_write_storage">写入存储</string>
+    <string name="permission_all_files_access">SD 卡文件访问</string>
+    <string name="permission_read_images">读取图片</string>
+    <string name="permission_read_video">读取视频</string>
+    <string name="permission_read_audio">读取音频</string>
+    <string name="permission_notifications">通知</string>
+    <string name="permission_camera">相机</string>
+    <string name="permission_microphone">麦克风</string>
+    <string name="permission_precise_location">精确定位</string>
+    <string name="permission_approximate_location">粗略定位</string>
+    <string name="permission_read_phone_state">读取电话状态</string>
+    <string name="permission_call_phone">拨打电话</string>
+    <string name="permission_read_contacts">读取通讯录</string>
+    <string name="permission_send_sms">发送短信</string>
+    <string name="permission_overlay">悬浮窗</string>
+    <string name="permission_install_apps">安装应用</string>
+    <string name="required_permissions">所需权限</string>
+    <string name="all_files_access_required">请授予 SD 卡文件访问权限后再进入。</string>
+    <string name="permissions_required">请授予所需权限后再进入。</string>
+</resources>

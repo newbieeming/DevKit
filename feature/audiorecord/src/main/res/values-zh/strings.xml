@@ -1,0 +1,31 @@
+<resources>
+    <string name="audio_record_title">音频录制</string>
+    <string name="audio_record_description">录制 PCM 音频，实时查看波形并管理录音文件</string>
+    <string name="start_recording">开始录音</string>
+    <string name="stop_recording">停止录音</string>
+    <string name="no_recordings">暂无录音</string>
+    <string name="play">播放</string>
+    <string name="stop_playback">停止播放</string>
+    <string name="rename">重命名</string>
+    <string name="delete">删除</string>
+    <string name="rename_recording">重命名录音</string>
+    <string name="file_name">文件名</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="recording_parameters">录音参数</string>
+    <string name="audio_source">音频源</string>
+    <string name="sample_rate">采样率</string>
+    <string name="input_channels">输入声道</string>
+    <string name="encoding_format">编码格式</string>
+    <string name="waveform_channels">波形通道</string>
+    <string name="unknown">未知</string>
+    <string name="back">返回</string>
+    <string name="recording_list">录音列表</string>
+    <string name="configure_parameters">参数配置</string>
+    <string name="recording_failed">录音失败</string>
+    <string name="recording_saved">录音已保存：%1$s</string>
+    <string name="delete_recording_failed">删除录音失败</string>
+    <string name="rename_recording_failed">重命名录音失败</string>
+    <string name="audio_playback_initialization_failed">无法初始化音频播放</string>
+    <string name="playback_failed">播放失败</string>
+</resources>

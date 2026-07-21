@@ -1,7 +1,10 @@
 package com.newbieeming.devkit.feature.appmanager
 
 import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Apps
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -21,9 +24,9 @@ class AppManagerEntry : FeatureEntry {
     @Composable
     override fun Tile(modifier: Modifier, onNavigate: (route: String) -> Unit) {
         FeatureTileScaffold(
-            icon = "📱",
-            title = "应用管理",
-            description = "查看信息、卸载、跳转权限设置",
+            icon = Icons.Default.Apps,
+            title = stringResource(R.string.app_manager_title),
+            description = stringResource(R.string.app_manager_description),
             modifier = modifier,
             onClick = { onNavigate(APP_MANAGER_ROUTE) },
         )
@@ -32,7 +35,7 @@ class AppManagerEntry : FeatureEntry {
     override fun registerNavigation(builder: NavGraphBuilder, navController: NavController) {
         builder.composable(route = APP_MANAGER_ROUTE) {
             // TODO: AppManagerScreen(navController)
-            androidx.compose.material3.Text("应用管理 — 待实现")
+            androidx.compose.material3.Text(stringResource(R.string.app_manager_not_implemented))
         }
     }
 }

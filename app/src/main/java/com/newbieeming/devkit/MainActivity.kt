@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,8 +25,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.newbieeming.devkit.core.designsystem.theme.DevKitTheme
 import com.newbieeming.devkit.core.ui.FeatureEntry
+import com.newbieeming.devkit.ui.theme.DevKitTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -90,7 +91,7 @@ private fun DevKitApp(
  *
  * 使用 [LazyVerticalStaggeredGrid] + [StaggeredGridCells.Adaptive]：
  * - **等宽分列**：所有列宽相等，平分可用宽度
- * - **自适应列数**：每列至少 [MIN_TILE_WIDTH]，屏幕越宽列越多（最少 2 列）
+ * - **自适应列数**：目标宽度由可用屏幕宽度按比例计算，且不小于 [MIN_TILE_WIDTH]
  * - **不固定行高**：每个磁贴高度由自身内容决定，形成真正的瀑布流
  */
 @Composable
@@ -99,35 +100,38 @@ private fun FeatureDashboard(
     onNavigate: (String) -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
-    LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Adaptive(minSize = MIN_TILE_WIDTH),
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(
-            start = GRID_PADDING,
-            end = GRID_PADDING,
-            top = contentPadding.calculateTopPadding() + GRID_PADDING,
-            bottom = contentPadding.calculateBottomPadding() + GRID_PADDING,
-        ),
-        horizontalArrangement = Arrangement.spacedBy(TILE_SPACING),
-        verticalItemSpacing = TILE_SPACING,
-    ) {
-        items(
-            items = entries,
-            key = { it.featureId },
-        ) { entry ->
-            entry.Tile(
-                modifier = Modifier.fillMaxWidth(),
-                onNavigate = onNavigate,
-            )
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val extraWidth = maxOf(0.dp, maxWidth - MIN_TILE_WIDTH)
+        val tileWidth = MIN_TILE_WIDTH + extraWidth * TILE_WIDTH_REMAINDER_RATIO
+        LazyVerticalStaggeredGrid(
+            columns = StaggeredGridCells.Adaptive(minSize = tileWidth),
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(
+                start = GRID_PADDING,
+                end = GRID_PADDING,
+                top = contentPadding.calculateTopPadding() + GRID_PADDING,
+                bottom = contentPadding.calculateBottomPadding() + GRID_PADDING,
+            ),
+            horizontalArrangement = Arrangement.spacedBy(TILE_SPACING),
+            verticalItemSpacing = TILE_SPACING,
+        ) {
+            items(
+                items = entries,
+                key = { it.featureId },
+            ) { entry ->
+                entry.Tile(
+                    modifier = Modifier.fillMaxWidth(),
+                    onNavigate = onNavigate,
+                )
+            }
         }
     }
 }
 
 private const val DASHBOARD_ROUTE = "dashboard"
 
-// 每列最小宽度：屏幕宽度 ÷ MIN_TILE_WIDTH ≥ 2 列（手机典型宽度 360dp）
-// 360dp - 2×16dp(padding) - 12dp(间距) = 316dp → 316÷2 = 158dp → ≥ 150dp → 2 列
-// 平板 600dp → (600-44)÷150 = 3.7 → 3 列，以此类推
-private val MIN_TILE_WIDTH = 150.dp
+// 以 160dp 为基线，仅按比例吸收额外屏宽，避免宽屏卡片突然变得过宽。
+private const val TILE_WIDTH_REMAINDER_RATIO = 0.10f
+private val MIN_TILE_WIDTH = 130.dp
 private val GRID_PADDING  = 16.dp
 private val TILE_SPACING  = 12.dp

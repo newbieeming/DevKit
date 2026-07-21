@@ -1,0 +1,5 @@
+<resources>
+    <string name="network_speed_title">网络监控</string>
+    <string name="network_speed_description">通过悬浮窗实时查看上传和下载速度</string>
+    <string name="network_speed_not_implemented">网速监控 — 待实现</string>
+</resources>

@@ -1,7 +1,10 @@
 package com.newbieeming.devkit.feature.timesync
 
 import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -21,9 +24,9 @@ class TimeSyncEntry : FeatureEntry {
     override fun Tile(modifier: Modifier, onNavigate: (route: String) -> Unit) {
         // TODO: 接入 TimeSyncViewModel 展示实时时间
         FeatureTileScaffold(
-            icon = "🕐",
-            title = "时间同步",
-            description = "可配置 NTP 服务器，精准对时",
+            icon = Icons.Default.Schedule,
+            title = stringResource(R.string.time_sync_title),
+            description = stringResource(R.string.time_sync_description),
             modifier = modifier,
             onClick = { onNavigate(TIME_SYNC_ROUTE) },
         )
@@ -32,7 +35,7 @@ class TimeSyncEntry : FeatureEntry {
     override fun registerNavigation(builder: NavGraphBuilder, navController: NavController) {
         builder.composable(route = TIME_SYNC_ROUTE) {
             // TODO: TimeSyncScreen(navController)
-            androidx.compose.material3.Text("时间同步 — 待实现")
+            androidx.compose.material3.Text(stringResource(R.string.time_sync_not_implemented))
         }
     }
 }

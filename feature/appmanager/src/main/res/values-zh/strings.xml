@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_manager_title">应用管理</string>
+    <string name="app_manager_description">查看已安装应用，并快速打开相关系统设置</string>
+    <string name="app_manager_not_implemented">应用管理 — 待实现</string>
+</resources>

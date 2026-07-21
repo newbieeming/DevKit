@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_manager_title">App manager</string>
+    <string name="app_manager_description">Explore installed apps and quickly open relevant system settings</string>
+    <string name="app_manager_not_implemented">App manager — not implemented</string>
+</resources>

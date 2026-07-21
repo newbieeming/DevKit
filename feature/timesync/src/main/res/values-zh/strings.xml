@@ -1,0 +1,5 @@
+<resources>
+    <string name="time_sync_title">时间同步</string>
+    <string name="time_sync_description">通过可配置的 NTP 服务器保持设备时间准确</string>
+    <string name="time_sync_not_implemented">时间同步 — 待实现</string>
+</resources>

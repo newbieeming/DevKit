@@ -1,7 +1,10 @@
 package com.newbieeming.devkit.feature.deviceinfo
 
 import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Memory
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -20,9 +23,9 @@ class DeviceInfoEntry : FeatureEntry {
     @Composable
     override fun Tile(modifier: Modifier, onNavigate: (route: String) -> Unit) {
         FeatureTileScaffold(
-            icon = "🖥️",
-            title = "设备信息",
-            description = "系统版本、平台算力、厂商属性",
+            icon = Icons.Default.Memory,
+            title = stringResource(R.string.device_info_title),
+            description = stringResource(R.string.device_info_description),
             modifier = modifier,
             onClick = { onNavigate(DEVICE_INFO_ROUTE) },
         )
@@ -31,7 +34,7 @@ class DeviceInfoEntry : FeatureEntry {
     override fun registerNavigation(builder: NavGraphBuilder, navController: NavController) {
         builder.composable(route = DEVICE_INFO_ROUTE) {
             // TODO: DeviceInfoScreen(navController)
-            androidx.compose.material3.Text("设备信息 — 待实现")
+            androidx.compose.material3.Text(stringResource(R.string.device_info_not_implemented))
         }
     }
 }

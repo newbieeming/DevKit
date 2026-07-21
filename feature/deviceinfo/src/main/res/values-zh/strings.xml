@@ -1,0 +1,5 @@
+<resources>
+    <string name="device_info_title">设备详情</string>
+    <string name="device_info_description">查看系统版本、硬件能力和厂商信息</string>
+    <string name="device_info_not_implemented">设备信息 — 待实现</string>
+</resources>

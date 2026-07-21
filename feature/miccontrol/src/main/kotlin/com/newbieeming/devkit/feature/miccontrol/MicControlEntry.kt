@@ -3,11 +3,14 @@ package com.newbieeming.devkit.feature.miccontrol
 import android.Manifest
 import android.content.Intent
 import android.provider.Settings
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Mic
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.newbieeming.devkit.core.ui.FeatureEntry
@@ -30,11 +33,11 @@ class MicControlEntry : FeatureEntry {
         val isServiceRunning by viewModel.isServiceRunningFlow.collectAsState()
 
         FeatureTileScaffold(
-            icon = "🎙️",
-            title = "MIC悬浮按钮",
-            description = "控制系统全局麦克风静音(可拖拽)",
+            icon = Icons.Default.Mic,
+            title = stringResource(R.string.mic_control_title),
+            description = stringResource(R.string.mic_control_description),
             modifier = modifier,
-            badge = if (isServiceRunning) "已启用" else "未启用",
+            badge = stringResource(if (isServiceRunning) R.string.enabled else R.string.disabled),
             requiredPermissions = listOf(
                 Manifest.permission.SYSTEM_ALERT_WINDOW
             ),

@@ -1,0 +1,5 @@
+<resources>
+    <string name="device_info_title">Device details</string>
+    <string name="device_info_description">View system version, hardware capabilities, and manufacturer details</string>
+    <string name="device_info_not_implemented">Device information — not implemented</string>
+</resources>

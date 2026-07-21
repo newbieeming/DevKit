@@ -1,0 +1,5 @@
+<resources>
+    <string name="network_speed_title">Network monitor</string>
+    <string name="network_speed_description">Monitor real-time upload and download speeds from a floating overlay</string>
+    <string name="network_speed_not_implemented">Network speed — not implemented</string>
+</resources>

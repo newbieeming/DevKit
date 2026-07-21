@@ -9,8 +9,10 @@ android {
 
 dependencies {
     implementation(project(":core:ui"))
-    implementation(project(":core:data"))
-    implementation(project(":core:domain"))
     implementation(project(":core:permissions"))
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.datastore.preferences)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.compose.material.icons)
 }

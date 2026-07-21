@@ -1,0 +1,5 @@
+<resources>
+    <string name="time_sync_title">Time synchronization</string>
+    <string name="time_sync_description">Keep device time accurate with a configurable NTP server</string>
+    <string name="time_sync_not_implemented">Time sync — not implemented</string>
+</resources>

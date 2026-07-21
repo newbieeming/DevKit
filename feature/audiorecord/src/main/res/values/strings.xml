@@ -1,0 +1,31 @@
+<resources>
+    <string name="audio_record_title">Audio recorder</string>
+    <string name="audio_record_description">Capture PCM audio with a live waveform and manage saved files</string>
+    <string name="start_recording">Start recording</string>
+    <string name="stop_recording">Stop recording</string>
+    <string name="no_recordings">No recordings yet</string>
+    <string name="play">Play</string>
+    <string name="stop_playback">Stop playback</string>
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
+    <string name="rename_recording">Rename recording</string>
+    <string name="file_name">File name</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="recording_parameters">Recording parameters</string>
+    <string name="audio_source">Audio source</string>
+    <string name="sample_rate">Sample rate</string>
+    <string name="input_channels">Input channels</string>
+    <string name="encoding_format">Encoding format</string>
+    <string name="waveform_channels">Waveform channels</string>
+    <string name="unknown">Unknown</string>
+    <string name="back">Back</string>
+    <string name="recording_list">Recordings</string>
+    <string name="configure_parameters">Configure parameters</string>
+    <string name="recording_failed">Recording failed</string>
+    <string name="recording_saved">Recording saved: %1$s</string>
+    <string name="delete_recording_failed">Failed to delete recording</string>
+    <string name="rename_recording_failed">Failed to rename recording</string>
+    <string name="audio_playback_initialization_failed">Unable to initialize audio playback</string>
+    <string name="playback_failed">Playback failed</string>
+</resources>

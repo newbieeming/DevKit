@@ -1,7 +1,10 @@
 package com.newbieeming.devkit.feature.networkspeed
 
 import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.NetworkCheck
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -22,9 +25,9 @@ class NetworkSpeedEntry : FeatureEntry {
     override fun Tile(modifier: Modifier, onNavigate: (route: String) -> Unit) {
         // TODO: 接入 NetworkSpeedViewModel 展示实时速率
         FeatureTileScaffold(
-            icon = "📶",
-            title = "网速监控",
-            description = "悬浮实时显示上下行速率",
+            icon = Icons.Default.NetworkCheck,
+            title = stringResource(R.string.network_speed_title),
+            description = stringResource(R.string.network_speed_description),
             modifier = modifier,
             // badge = "↑ 1.2 MB/s",
             onClick = { onNavigate(NETWORK_SPEED_ROUTE) },
@@ -34,7 +37,7 @@ class NetworkSpeedEntry : FeatureEntry {
     override fun registerNavigation(builder: NavGraphBuilder, navController: NavController) {
         builder.composable(route = NETWORK_SPEED_ROUTE) {
             // TODO: NetworkSpeedScreen(navController)
-            androidx.compose.material3.Text("网速监控 — 待实现")
+            androidx.compose.material3.Text(stringResource(R.string.network_speed_not_implemented))
         }
     }
 }
