@@ -15,9 +15,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -90,6 +92,7 @@ private fun permissionDisplayName(permission: String, displayNames: Map<String, 
  * @param title       功能名称
  * @param description 一两句说明（多行时卡片自动变高）
  * @param badge       右上角状态徽章（可选）
+ * @param actionIcon  右上角圆形快捷操作图标（可选）
  * @param requiredPermissions 需要的权限名称列表，组件会在每次 resume 时自动检查授权状态
  * @param onClick     点击回调
  */
@@ -101,6 +104,9 @@ fun FeatureTileScaffold(
     description: String,
     modifier: Modifier = Modifier,
     badge: String? = null,
+    actionIcon: ImageVector? = null,
+    actionContentDescription: String? = null,
+    onActionClick: (() -> Unit)? = null,
     requiredPermissions: List<String> = emptyList(),
     onClick: () -> Unit = {},
 ) {
@@ -155,7 +161,19 @@ fun FeatureTileScaffold(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                if (badge != null) {
+                if (actionIcon != null && onActionClick != null) {
+                    FilledTonalIconButton(
+                        onClick = onActionClick,
+                        modifier = Modifier.size(48.dp),
+                        shape = CircleShape,
+                    ) {
+                        Icon(
+                            imageVector = actionIcon,
+                            contentDescription = actionContentDescription,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    }
+                } else if (badge != null) {
                     FeatureBadge(badge)
                 }
             }

@@ -1,33 +1,46 @@
 package com.newbieeming.devkit.core.designsystem.theme
 
+import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 
 // 主色调
 private val DarkColorScheme = darkColorScheme(
-    primary   = DevKitColors.Blue400,
-    secondary = DevKitColors.Cyan300,
-    surface   = DevKitColors.Gray900,
-    background = DevKitColors.Gray950,
+    primary = Color(0xFFD0BCFF),
+    secondary = Color(0xFFCCC2DC),
+    tertiary = Color(0xFFEFB8C8),
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary   = DevKitColors.Blue600,
-    secondary = DevKitColors.Cyan600,
+    primary = Color(0xFF6650A4),
+    secondary = Color(0xFF625B71),
+    tertiary = Color(0xFF7D5260),
 )
 
 @Composable
 fun DevKitTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),   // 跟随系统昼夜模式
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    dynamicColor: Boolean = true,
     content: @Composable () -> Unit,
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+    val context = LocalContext.current
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
     MaterialTheme(
         colorScheme = colorScheme,
-        typography  = DevKitTypography,
-        content     = content,
+        typography = DevKitTypography,
+        content = content,
     )
 }

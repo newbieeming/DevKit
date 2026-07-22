@@ -9,11 +9,9 @@ android {
 
 dependencies {
     implementation(project(":core:ui"))
-    implementation(project(":core:data"))
-    implementation(project(":core:domain"))
-    implementation(project(":core:permissions"))
-    implementation(project(":core:service"))
+    implementation(project(":core:datastore"))
+    implementation(libs.androidx.core.ktx)
     implementation(libs.hilt.navigation.compose)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7")
-    implementation("androidx.savedstate:savedstate-ktx:1.2.1")
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.kotlinx.coroutines.android)
 }

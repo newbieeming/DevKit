@@ -1,5 +1,16 @@
 <resources>
     <string name="time_sync_title">时间同步</string>
-    <string name="time_sync_description">通过可配置的 NTP 服务器保持设备时间准确</string>
-    <string name="time_sync_not_implemented">时间同步 — 待实现</string>
+    <string name="time_sync_description">通过悬浮窗随时查看设备当前时间</string>
+    <string name="start_time_overlay">显示当前时间</string>
+    <string name="stop_time_overlay">隐藏当前时间</string>
+    <string name="current_time">当前时间</string>
+    <string name="time_format">时间格式</string>
+    <string name="time_format_system">跟随系统</string>
+    <string name="time_format_24_seconds">24 小时 · HH:mm:ss</string>
+    <string name="time_format_24">24 小时 · HH:mm</string>
+    <string name="time_format_12_seconds">12 小时 · hh:mm:ss a</string>
+    <string name="time_format_12">12 小时 · hh:mm a</string>
+    <string name="time_notification_title">当前时间</string>
+    <string name="time_notification_text">时间悬浮窗正在运行</string>
+    <string name="time_notification_channel">时间显示</string>
 </resources>

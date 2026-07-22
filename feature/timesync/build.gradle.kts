@@ -9,8 +9,8 @@ android {
 
 dependencies {
     implementation(project(":core:ui"))
-    implementation(project(":core:data"))
-    implementation(project(":core:domain"))
-    implementation(project(":core:network"))
+    implementation(project(":core:datastore"))
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.kotlinx.coroutines.android)
 }

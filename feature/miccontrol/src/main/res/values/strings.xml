@@ -1,6 +1,11 @@
 <resources>
     <string name="mic_control_title">Microphone control</string>
     <string name="mic_control_description">Quickly mute or unmute the system microphone from a draggable overlay</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="start_mic_overlay">Show microphone control</string>
+    <string name="stop_mic_overlay">Hide microphone control</string>
+    <string name="mic_muted">Microphone muted</string>
+    <string name="mic_active">Microphone active</string>
+    <string name="mic_notification_title">Microphone control</string>
+    <string name="mic_notification_text">Floating microphone control is active</string>
+    <string name="mic_notification_channel">Microphone control</string>
 </resources>

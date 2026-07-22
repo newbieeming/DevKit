@@ -1,6 +1,11 @@
 <resources>
     <string name="mic_control_title">麦克风控制</string>
     <string name="mic_control_description">通过可拖拽悬浮窗快速开关系统麦克风</string>
-    <string name="enabled">已启用</string>
-    <string name="disabled">未启用</string>
+    <string name="start_mic_overlay">显示麦克风控制</string>
+    <string name="stop_mic_overlay">隐藏麦克风控制</string>
+    <string name="mic_muted">麦克风已静音</string>
+    <string name="mic_active">麦克风已启用</string>
+    <string name="mic_notification_title">麦克风控制</string>
+    <string name="mic_notification_text">麦克风悬浮控制正在运行</string>
+    <string name="mic_notification_channel">麦克风控制</string>
 </resources>

@@ -1,5 +1,16 @@
 <resources>
     <string name="time_sync_title">Time synchronization</string>
-    <string name="time_sync_description">Keep device time accurate with a configurable NTP server</string>
-    <string name="time_sync_not_implemented">Time sync — not implemented</string>
+    <string name="time_sync_description">Keep the current device time visible in a floating window</string>
+    <string name="start_time_overlay">Show current time</string>
+    <string name="stop_time_overlay">Hide current time</string>
+    <string name="current_time">Current time</string>
+    <string name="time_format">Time format</string>
+    <string name="time_format_system">Follow system</string>
+    <string name="time_format_24_seconds">24-hour · HH:mm:ss</string>
+    <string name="time_format_24">24-hour · HH:mm</string>
+    <string name="time_format_12_seconds">12-hour · hh:mm:ss a</string>
+    <string name="time_format_12">12-hour · hh:mm a</string>
+    <string name="time_notification_title">Current time</string>
+    <string name="time_notification_text">Floating time display is active</string>
+    <string name="time_notification_channel">Time display</string>
 </resources>

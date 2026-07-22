@@ -9,7 +9,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:model"))
+    api(project(":core:model"))
     implementation(libs.datastore.preferences)
     implementation(libs.kotlin.serialization.json)
 }

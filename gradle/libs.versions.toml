@@ -8,6 +8,7 @@ ksp             = "2.2.10-2.0.2"
 coreKtx         = "1.16.0"
 lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
+savedstate      = "1.2.1"
 
 # ── Compose ──────────────────────────────────────────────────────────────────
 composeBom      = "2026.02.01"
@@ -42,7 +43,9 @@ espressoCore    = "3.6.1"
 androidx-core-ktx               = { group = "androidx.core",              name = "core-ktx",                   version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx  = { group = "androidx.lifecycle",         name = "lifecycle-runtime-ktx",      version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel    = { group = "androidx.lifecycle",         name = "lifecycle-viewmodel-ktx",    version.ref = "lifecycleRuntimeKtx" }
+androidx-viewmodel-savedstate     = { group = "androidx.lifecycle",         name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose       = { group = "androidx.activity",          name = "activity-compose",           version.ref = "activityCompose" }
+androidx-savedstate-ktx         = { group = "androidx.savedstate",        name = "savedstate-ktx",              version.ref = "savedstate" }
 
 # ── Compose BOM + components ──────────────────────────────────────────────────
 androidx-compose-bom             = { group = "androidx.compose",          name = "compose-bom",                version.ref = "composeBom" }

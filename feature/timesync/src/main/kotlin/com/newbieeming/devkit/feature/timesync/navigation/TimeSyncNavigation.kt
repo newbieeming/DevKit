@@ -1,15 +1,13 @@
 package com.newbieeming.devkit.feature.timesync.navigation
 
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.newbieeming.devkit.feature.timesync.ui.TimeSyncScreen
 
 const val TIME_SYNC_ROUTE = "time_sync"
 
-fun NavController.navigateToTimeSync() = navigate(TIME_SYNC_ROUTE)
-
-fun NavGraphBuilder.timeSyncScreen() {
+fun NavGraphBuilder.timeSyncScreen(onNavigateUp: () -> Unit) {
     composable(route = TIME_SYNC_ROUTE) {
-        // TODO: TimeSyncScreen()
+        TimeSyncScreen(onNavigateUp = onNavigateUp)
     }
 }

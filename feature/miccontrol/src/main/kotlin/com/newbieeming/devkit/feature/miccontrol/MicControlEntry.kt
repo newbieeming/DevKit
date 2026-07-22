@@ -1,57 +1,55 @@
 package com.newbieeming.devkit.feature.miccontrol
 
 import android.Manifest
-import android.content.Intent
-import android.provider.Settings
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Mic
+import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import com.newbieeming.devkit.core.ui.FeatureEntry
 import com.newbieeming.devkit.core.ui.FeatureTileScaffold
+import com.newbieeming.devkit.core.ui.rememberOverlayPermissionAction
+import com.newbieeming.devkit.feature.miccontrol.navigation.MIC_CONTROL_ROUTE
+import com.newbieeming.devkit.feature.miccontrol.navigation.micControlScreen
 
-/**
- * 麦克风控制 Feature 入口
- *
- * 磁贴点击直接启动悬浮窗。
- *
- */
 class MicControlEntry : FeatureEntry {
     override val featureId = "mic_control"
-    override val priority = 10   // 悬浮控制类优先展示
+    override val priority = 10
 
     @Composable
     override fun Tile(modifier: Modifier, onNavigate: (route: String) -> Unit) {
         val viewModel: MicControlViewModel = hiltViewModel()
-        val context = LocalContext.current
-        val isServiceRunning by viewModel.isServiceRunningFlow.collectAsState()
+        val config by viewModel.config.collectAsState()
+        val isRunning by viewModel.isServiceRunning.collectAsState()
+        val toggleOverlay = rememberOverlayPermissionAction {
+            viewModel.toggleOverlay(config)
+        }
 
         FeatureTileScaffold(
             icon = Icons.Default.Mic,
             title = stringResource(R.string.mic_control_title),
             description = stringResource(R.string.mic_control_description),
             modifier = modifier,
-            badge = stringResource(if (isServiceRunning) R.string.enabled else R.string.disabled),
-            requiredPermissions = listOf(
-                Manifest.permission.SYSTEM_ALERT_WINDOW
+            actionIcon = if (isRunning) Icons.Default.Pause else Icons.Default.PlayArrow,
+            actionContentDescription = stringResource(
+                if (isRunning) R.string.stop_mic_overlay else R.string.start_mic_overlay,
             ),
-            onClick = {
-                if (Settings.canDrawOverlays(context)) {
-                    viewModel.toggleOverlay()
-                } else {
-                    val intent = Intent(
-                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                        "package:${context.packageName}".toUri()
-                    )
-                    context.startActivity(intent)
-                }
+            onActionClick = {
+                if (isRunning) viewModel.toggleOverlay(config) else toggleOverlay()
             },
+            requiredPermissions = listOf(Manifest.permission.SYSTEM_ALERT_WINDOW),
+            onClick = { onNavigate(MIC_CONTROL_ROUTE) },
         )
+    }
+
+    override fun registerNavigation(builder: NavGraphBuilder, navController: NavController) {
+        builder.micControlScreen(onNavigateUp = { navController.navigateUp() })
     }
 }

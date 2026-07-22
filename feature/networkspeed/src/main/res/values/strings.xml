@@ -1,5 +1,19 @@
 <resources>
     <string name="network_speed_title">Network monitor</string>
     <string name="network_speed_description">Monitor real-time upload and download speeds from a floating overlay</string>
-    <string name="network_speed_not_implemented">Network speed — not implemented</string>
+    <string name="start_network_overlay">Show network speed</string>
+    <string name="stop_network_overlay">Hide network speed</string>
+    <string name="download_speed">Download speed</string>
+    <string name="upload_speed">Upload speed</string>
+    <string name="network_display_content">Displayed speeds</string>
+    <string name="network_display_download">Download only</string>
+    <string name="network_display_upload">Upload only</string>
+    <string name="network_display_both">Upload and download</string>
+    <string name="network_indicator_style">Direction indicator</string>
+    <string name="network_indicator_arrow">Arrow</string>
+    <string name="network_indicator_dot">Dot</string>
+    <string name="network_indicator_none">None</string>
+    <string name="network_notification_title">Network monitor</string>
+    <string name="network_notification_text">Floating network speed is active</string>
+    <string name="network_notification_channel">Network monitor</string>
 </resources>

@@ -27,7 +27,7 @@
 | 📱 **应用管理** | `feature:appmanager` | 查看应用信息、跳转卸载 / 权限设置页 |
 | 📶 **网速悬浮显示** | `feature:networkspeed` | 常驻悬浮卡片实时展示上下行速率 |
 | 🖥️ **设备信息** | `feature:deviceinfo` | 查看系统版本、平台算力、厂商扩展属性 |
-| 🕐 **时间同步** | `feature:timesync` | 可配置 NTP 服务器，精准对时并展示当前时间 |
+| 🕐 **时间同步** | `feature:timesync` | 通过可配置悬浮窗实时展示设备当前时间 |
 
 ---
 
@@ -116,12 +116,12 @@ feature:xxx/
 
 | 模块 | 说明 | 关键权限 |
 |---|---|---|
-| `:feature:miccontrol` | 悬浮麦克风图标，长按拖动，点击开关录音设备。依赖 `BaseOverlayService` | `RECORD_AUDIO` `SYSTEM_ALERT_WINDOW` |
+| `:feature:miccontrol` | 可拖拽麦克风悬浮控制，支持卡片快捷启停与大小/初始位置/图标配置 | `MODIFY_AUDIO_SETTINGS` `SYSTEM_ALERT_WINDOW` |
 | `:feature:audiorecord` | PCM 录音、实时波形、播放、重命名与删除。兼容原 SoundCapture，文件保存在 `/sdcard/SoundCapture` | `RECORD_AUDIO`；Android 11+ 还需“所有文件访问” |
 | `:feature:appmanager` | 已安装应用列表（支持系统/用户应用过滤），跳转系统应用详情 / 卸载 / 权限页 | `QUERY_ALL_PACKAGES` `REQUEST_INSTALL_PACKAGES` |
-| `:feature:networkspeed` | 常驻悬浮卡片，每秒刷新 `NetworkSpeedSnapshot`（上/下行字节速率）。依赖 `BaseOverlayService` | `SYSTEM_ALERT_WINDOW` `ACCESS_NETWORK_STATE` |
+| `:feature:networkspeed` | 每秒计算设备上下行速率，通过可配置悬浮窗实时显示 | `SYSTEM_ALERT_WINDOW` `ACCESS_NETWORK_STATE` |
 | `:feature:deviceinfo` | 展示 `DeviceInfo`（型号、Android 版本、CPU ABI、RAM、厂商属性）。车机扩展属性通过 `customProperties: Map<String, String>` 注入 | — |
-| `:feature:timesync` | NTP 对时（可配置服务器地址与同步间隔），时间实时展示 | `ACCESS_NETWORK_STATE` |
+| `:feature:timesync` | 根据系统 12/24 小时制实时显示当前时间，支持悬浮窗配置 | `SYSTEM_ALERT_WINDOW` |
 
 ### Feature 入口、导航与权限
 
@@ -179,7 +179,7 @@ cd DevKit
 
 ### 悬浮窗权限
 
-首次使用 **麦克风控制** 或 **网速悬浮显示** 时，应用会引导用户跳转系统设置开启"显示在其他应用上层"权限（`SYSTEM_ALERT_WINDOW`）。
+首次使用 **麦克风控制**、**网速悬浮显示** 或 **时间悬浮显示** 时，应用会引导用户跳转系统设置开启“显示在其他应用上层”权限（`SYSTEM_ALERT_WINDOW`）。
 
 ---
 

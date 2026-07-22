@@ -1,6 +1,9 @@
 package com.newbieeming.devkit.core.ui
 
 import android.os.Build
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -9,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.newbieeming.devkit.core.permissions.DevKitPermissionManager
 import com.newbieeming.devkit.core.permissions.DevKitPermissions
 
@@ -26,13 +30,15 @@ fun rememberFeaturePermissionRequest(
 ): () -> Unit {
     val context = LocalContext.current
     val latestOnGranted by rememberUpdatedState(onGranted)
+    val allFilesAccessRequiredMessage = stringResource(R.string.all_files_access_required)
+    val permissionsRequiredMessage = stringResource(R.string.permissions_required)
     val allFilesAccessLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult(),
     ) {
         if (DevKitPermissionManager.isGranted(context, DevKitPermissions.ALL_FILES_ACCESS)) {
             latestOnGranted()
         } else {
-            Toast.makeText(context, context.getString(R.string.all_files_access_required), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, allFilesAccessRequiredMessage, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -54,7 +60,7 @@ fun rememberFeaturePermissionRequest(
         if (runtimePermissions.all { DevKitPermissionManager.isGranted(context, it) }) {
             continueWhenGranted()
         } else {
-            Toast.makeText(context, context.getString(R.string.permissions_required), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, permissionsRequiredMessage, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -67,6 +73,37 @@ fun rememberFeaturePermissionRequest(
                 continueWhenGranted()
             } else {
                 runtimePermissionLauncher.launch(missingPermissions.toTypedArray())
+            }
+        }
+    }
+}
+
+/** 请求悬浮窗权限，并在授权成功后执行 [onGranted]。 */
+@Composable
+fun rememberOverlayPermissionAction(onGranted: () -> Unit): () -> Unit {
+    val context = LocalContext.current
+    val latestOnGranted by rememberUpdatedState(onGranted)
+    val deniedMessage = stringResource(R.string.overlay_permission_required)
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult(),
+    ) {
+        if (DevKitPermissionManager.isGranted(context, DevKitPermissions.SYSTEM_ALERT)) {
+            latestOnGranted()
+        } else {
+            Toast.makeText(context, deniedMessage, Toast.LENGTH_SHORT).show()
+        }
+    }
+    return remember(context, launcher) {
+        {
+            if (DevKitPermissionManager.isGranted(context, DevKitPermissions.SYSTEM_ALERT)) {
+                latestOnGranted()
+            } else {
+                launcher.launch(
+                    Intent(
+                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:${context.packageName}"),
+                    ),
+                )
             }
         }
     }
