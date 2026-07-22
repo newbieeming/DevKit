@@ -2,6 +2,9 @@ package com.newbieeming.devkit.core.ui
 
 import android.Manifest
 import android.os.Build
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +13,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +33,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,6 +46,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import com.newbieeming.devkit.core.permissions.DevKitPermissionManager
+import kotlinx.coroutines.launch
 
 /**
  * 权限 → 本地化显示名映射。
@@ -162,17 +169,11 @@ fun FeatureTileScaffold(
                 Spacer(modifier = Modifier.weight(1f))
 
                 if (actionIcon != null && onActionClick != null) {
-                    FilledTonalIconButton(
+                    AnimatedFeatureActionButton(
+                        icon = actionIcon,
+                        contentDescription = actionContentDescription,
                         onClick = onActionClick,
-                        modifier = Modifier.size(48.dp),
-                        shape = CircleShape,
-                    ) {
-                        Icon(
-                            imageVector = actionIcon,
-                            contentDescription = actionContentDescription,
-                            modifier = Modifier.size(24.dp),
-                        )
-                    }
+                    )
                 } else if (badge != null) {
                     FeatureBadge(badge)
                 }
@@ -212,6 +213,67 @@ fun FeatureTileScaffold(
                         PermissionTag(permissionDisplayName(permName, permissionDisplayNames), isGranted)
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun AnimatedFeatureActionButton(
+    icon: ImageVector,
+    contentDescription: String?,
+    onClick: () -> Unit,
+) {
+    val animationProgress = remember { Animatable(0f) }
+    val coroutineScope = rememberCoroutineScope()
+    var isAnimating by remember { mutableStateOf(false) }
+    var displayedIcon by remember { mutableStateOf(icon) }
+    var displayedContentDescription by remember { mutableStateOf(contentDescription) }
+
+    LaunchedEffect(icon, contentDescription, isAnimating) {
+        if (!isAnimating) {
+            displayedIcon = icon
+            displayedContentDescription = contentDescription
+        }
+    }
+
+    FilledTonalIconButton(
+        onClick = {
+            if (isAnimating) return@FilledTonalIconButton
+            isAnimating = true
+            coroutineScope.launch {
+                animationProgress.snapTo(0f)
+                animationProgress.animateTo(
+                    targetValue = 1f,
+                    animationSpec = tween(
+                        durationMillis = ACTION_ANIMATION_DURATION_MS,
+                        easing = FastOutSlowInEasing,
+                    ),
+                )
+                isAnimating = false
+            }
+            onClick()
+        },
+        modifier = Modifier.size(48.dp),
+        shape = CircleShape,
+    ) {
+        Box(
+            modifier = Modifier.size(38.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = displayedIcon,
+                contentDescription = displayedContentDescription,
+                modifier = Modifier.size(22.dp),
+            )
+            if (isAnimating) {
+                CircularProgressIndicator(
+                    progress = { animationProgress.value },
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.primary,
+                    trackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.16f),
+                    strokeWidth = 2.5.dp,
+                )
             }
         }
     }
@@ -259,3 +321,5 @@ private fun PermissionTag(label: String, granted: Boolean) {
         }
     }
 }
+
+private const val ACTION_ANIMATION_DURATION_MS = 650

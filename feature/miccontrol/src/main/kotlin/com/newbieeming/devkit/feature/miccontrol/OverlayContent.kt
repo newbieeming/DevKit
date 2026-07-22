@@ -36,8 +36,10 @@ fun OverlayContent(
     val indicatorSize = (iconSize * 0.25f).coerceIn(7f, 24f)
     val drawsBackground = config.showBackground && config.backgroundColor != OverlayColorChoice.TRANSPARENT
     val backgroundShape = RoundedCornerShape((16f * scale).coerceIn(10f, 32f).dp)
+    val backgroundClip = if (drawsBackground) Modifier.clip(backgroundShape) else Modifier
     Box(
         modifier = modifier
+            .then(backgroundClip)
             .background(color = colors.background, shape = backgroundShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center,
