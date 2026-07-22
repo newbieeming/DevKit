@@ -50,6 +50,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -88,23 +89,56 @@ fun Waveform(
     Canvas(modifier = modifier.fillMaxSize()) {
         val laneHeight = size.height / channels
         repeat(channels) { channel ->
-            val values = samples[channel]
-            val maxBars = (size.width / 2f).toInt().coerceAtLeast(1)
-            val start = (values.size - maxBars).coerceAtLeast(0)
-            values.drop(start).forEachIndexed { index, amplitude ->
-                val centerY = laneHeight * (channel + .5f)
-                val halfHeight = laneHeight * .45f * amplitude
-                val x = index * 2f + .5f
-                drawLine(
-                    color = waveformColor,
-                    start = Offset(x, centerY - halfHeight),
-                    end = Offset(x, centerY + halfHeight),
-                    strokeWidth = 1f,
-                )
-            }
+            val channelSamples = samples[channel]
+            drawWaveformLane(
+                values = channelSamples,
+                centerY = laneHeight * (channel + .5f),
+                maxHalfHeight = laneHeight * .45f,
+                color = waveformColor,
+                showBaseline = isRecording && channelSamples.isNotEmpty(),
+            )
         }
     }
 }
+
+private fun DrawScope.drawWaveformLane(
+    values: List<Float>,
+    centerY: Float,
+    maxHalfHeight: Float,
+    color: Color,
+    showBaseline: Boolean,
+) {
+    val maxBars = (size.width / BAR_SPACING_PX).toInt().coerceAtLeast(1)
+    val firstSample = (values.size - maxBars).coerceAtLeast(0)
+    val visibleSampleCount = values.size - firstSample
+    val startX = (size.width - visibleSampleCount * BAR_SPACING_PX).coerceAtLeast(0f)
+
+    if (showBaseline) {
+        drawLine(
+            color = color.copy(alpha = BASELINE_ALPHA),
+            start = Offset(startX, centerY),
+            end = Offset(size.width, centerY),
+            strokeWidth = WAVEFORM_STROKE_WIDTH,
+        )
+    }
+
+    for (sampleIndex in firstSample until values.size) {
+        val visibleIndex = sampleIndex - firstSample
+        val halfHeight = maxHalfHeight * values[sampleIndex]
+        val x = startX + visibleIndex * BAR_SPACING_PX + BAR_CENTER_OFFSET_PX
+        drawLine(
+            color = color,
+            start = Offset(x, centerY - halfHeight),
+            end = Offset(x, centerY + halfHeight),
+            strokeWidth = WAVEFORM_STROKE_WIDTH,
+        )
+    }
+}
+
+private const val BAR_SPACING_PX = 2f
+private const val BAR_CENTER_OFFSET_PX = 0.5f
+private const val WAVEFORM_STROKE_WIDTH = 1f
+private const val BASELINE_ALPHA = 0.4f
 
 @Composable
 fun RecordingButton(isRecording: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
