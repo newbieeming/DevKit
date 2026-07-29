@@ -87,7 +87,7 @@ DevKit/
 |---|---|---|
 | `:core:model` | `jvm.library` | 纯 Kotlin 数据类（`AppInfo`、`RecordingFile`、`DeviceInfo`…），无 Android 依赖，可脱离设备单测 |
 | `:core:domain` | `jvm.library` | Repository **接口** + `UseCase`/`FlowUseCase` 基类，定义业务契约 |
-| `:core:common` | `android.library` + `hilt` | 协程调度器 DI（`@IoDispatcher` 等）、扩展函数、Timber 日志初始化 |
+| `:core:common` | `android.library` + `hilt` | 协程调度器 DI（`@IoDispatcher` 等）、安全的 `getprop` 系统属性读取、扩展函数与 Timber 日志初始化 |
 | `:core:database` | `android.library` + `hilt` | Room 数据库，管理录音元数据等本地持久化，Schema 导出至 `schemas/` 目录 |
 | `:core:datastore` | `android.library` + `hilt` | DataStore Preferences，存储用户配置（NTP 地址、悬浮窗开关…） |
 | `:core:network` | `android.library` + `hilt` | OkHttp + Kotlin 序列化，封装 NTP 同步与 HTTP 请求 |

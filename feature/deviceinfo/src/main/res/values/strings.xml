@@ -1,5 +1,169 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="device_info_title">Device details</string>
-    <string name="device_info_description">View system version, hardware capabilities, and manufacturer details</string>
-    <string name="device_info_not_implemented">Device information — not implemented</string>
+    <string name="device_info_description">Inspect device identity, system, processor, memory, storage, display, network, power, and hardware capabilities</string>
+    <string name="navigate_back">Navigate back</string>
+    <string name="refresh_device_info">Refresh device information</string>
+    <string name="device_info_load_failed">Device information could not be loaded</string>
+    <string name="retry">Retry</string>
+    <string name="loading">Loading…</string>
+
+    <string name="not_available">Not available</string>
+    <string name="not_reported_by_android">Not reported by Android</string>
+    <string name="restricted_by_android">Restricted by Android</string>
+    <string name="unknown">Unknown</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="supported">Supported</string>
+    <string name="not_supported">Not supported</string>
+
+    <string name="system_section">System</string>
+    <string name="processor_section">Processor</string>
+    <string name="memory_section">Memory</string>
+    <string name="internal_storage_section">Internal storage</string>
+    <string name="shared_storage_section">Shared storage</string>
+    <string name="removable_storage_section">Removable storage</string>
+    <string name="display_section">Display</string>
+    <string name="network_section">Network</string>
+    <string name="power_section">Power and thermal</string>
+    <string name="device_identity_section">Device identity</string>
+    <string name="capabilities_section">Capabilities</string>
+
+    <string name="android_version">Android version</string>
+    <string name="minimum_supported_android">Minimum supported Android</string>
+    <string name="target_android_api">Target Android API</string>
+    <string name="app_version">App version</string>
+    <string name="security_patch">Security patch</string>
+    <string name="build_number">Build number</string>
+    <string name="build_id">Build ID</string>
+    <string name="build_type">Build type</string>
+    <string name="kernel_version">Kernel version</string>
+    <string name="bootloader">Bootloader</string>
+    <string name="baseband_version">Baseband</string>
+    <string name="java_vm_version">Runtime</string>
+    <string name="device_uptime">Uptime</string>
+
+    <string name="cpu_model">CPU model</string>
+    <string name="soc">SoC</string>
+    <string name="cpu_architecture">Architecture</string>
+    <string name="supported_abis">Supported ABIs</string>
+    <string name="cpu_cores">CPU cores</string>
+    <string name="cpu_frequency_range">Frequency range</string>
+    <string name="cpu_current_frequency">Current average</string>
+    <string name="cpu_clusters">Core clusters</string>
+    <string name="aggregate_peak_frequency">Aggregate max clock</string>
+    <string name="aggregate_frequency_explanation">Frequency-derived hardware indicator only; it is not a FLOPS benchmark.</string>
+    <string name="instruction_features">Instruction features</string>
+
+    <string name="total_memory">Total memory</string>
+    <string name="memory_used">Used</string>
+    <string name="memory_available">Available</string>
+    <string name="memory_format">RAM type</string>
+    <string name="low_memory_threshold">Low-memory threshold</string>
+    <string name="low_memory_state">Low-memory state</string>
+    <string name="swap_usage">Swap usage</string>
+    <string name="app_heap_limit">App heap limit</string>
+
+    <string name="storage_used">Used</string>
+    <string name="storage_available">Available</string>
+    <string name="storage_total">Total</string>
+    <string name="file_system">File system</string>
+    <string name="removable">Removable</string>
+
+    <string name="resolution">Resolution</string>
+    <string name="density_dpi">Density</string>
+    <string name="logical_density">Logical density</string>
+    <string name="scaled_density">Scaled density</string>
+    <string name="physical_dpi">Physical DPI</string>
+    <string name="refresh_rate">Refresh rate</string>
+
+    <string name="network_status">Status</string>
+    <string name="network_transport">Transport</string>
+    <string name="internet_validated">Internet validated</string>
+    <string name="metered_network">Metered</string>
+    <string name="network_interface">Interface</string>
+    <string name="ip_addresses">IP addresses</string>
+    <string name="gateway">Gateway</string>
+    <string name="dns_servers">DNS servers</string>
+    <string name="private_dns">Private DNS</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="transport_wifi">Wi-Fi</string>
+    <string name="transport_ethernet">Ethernet</string>
+    <string name="transport_cellular">Cellular</string>
+    <string name="transport_vpn">VPN</string>
+    <string name="transport_bluetooth">Bluetooth</string>
+    <string name="transport_usb">USB</string>
+    <string name="transport_other">Other</string>
+
+    <string name="battery_level">Battery level</string>
+    <string name="battery_status">Status</string>
+    <string name="battery_health">Health</string>
+    <string name="power_source">Power source</string>
+    <string name="battery_temperature">Temperature</string>
+    <string name="battery_voltage">Voltage</string>
+    <string name="thermal_status">Thermal status</string>
+    <string name="battery_charging">Charging</string>
+    <string name="battery_discharging">Discharging</string>
+    <string name="battery_full">Full</string>
+    <string name="battery_not_charging">Not charging</string>
+    <string name="battery_health_good">Good</string>
+    <string name="battery_health_overheat">Overheating</string>
+    <string name="battery_health_dead">Dead</string>
+    <string name="battery_health_overvoltage">Overvoltage</string>
+    <string name="battery_health_cold">Cold</string>
+    <string name="battery_health_failure">Failure</string>
+    <string name="power_ac">AC</string>
+    <string name="power_usb">USB</string>
+    <string name="power_wireless">Wireless</string>
+    <string name="power_dock">Dock</string>
+    <string name="on_battery">Battery</string>
+    <string name="thermal_none">Normal</string>
+    <string name="thermal_light">Light throttling</string>
+    <string name="thermal_moderate">Moderate throttling</string>
+    <string name="thermal_severe">Severe throttling</string>
+    <string name="thermal_critical">Critical</string>
+    <string name="thermal_emergency">Emergency</string>
+    <string name="thermal_shutdown">Shutdown</string>
+
+    <string name="manufacturer">Manufacturer</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="product">Product</string>
+    <string name="device">Device</string>
+    <string name="board">Board</string>
+    <string name="hardware">Hardware</string>
+    <string name="serial_number">Serial number</string>
+    <string name="android_id">Android ID</string>
+    <string name="identifier_privacy_explanation">Serial access is restricted on recent Android versions. Android ID is scoped by app signing key and user.</string>
+
+    <string name="device_type">Device type</string>
+    <string name="camera_count">Cameras</string>
+    <string name="sensor_count">Sensors</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="nfc">NFC</string>
+    <string name="gps">GPS</string>
+    <string name="sensors">Sensor list</string>
+    <string name="device_type_automotive">Automotive</string>
+    <string name="device_type_television">Television</string>
+    <string name="device_type_tablet">Tablet</string>
+    <string name="device_type_phone">Phone</string>
+    <string name="device_type_embedded">Embedded</string>
+
+    <string name="android_version_value">Android %1$s (API %2$d)</string>
+    <string name="api_level_value">API %1$d</string>
+    <string name="app_version_value">%1$s (%2$d)</string>
+    <string name="core_count_value" tools:ignore="PluralsCandidate">%1$d online / %2$d total</string>
+    <string name="used_of_total_value">%1$s of %2$s used</string>
+    <string name="percent_value">%1$d%%</string>
+    <string name="frequency_ghz_value">%1$.2f GHz</string>
+    <string name="frequency_mhz_value">%1$.0f MHz</string>
+    <string name="range_value">%1$s – %2$s</string>
+    <string name="cluster_value">%1$d × %2$s</string>
+    <string name="resolution_value">%1$d × %2$d px</string>
+    <string name="dpi_value" tools:ignore="PluralsCandidate">%1$d dpi</string>
+    <string name="physical_dpi_value">X %1$.1f / Y %2$.1f dpi</string>
+    <string name="refresh_rate_value">%1$.2f Hz</string>
+    <string name="temperature_value">%1$.1f °C</string>
+    <string name="voltage_value">%1$d mV</string>
+    <string name="uptime_value">%1$d d %2$d h %3$d min</string>
 </resources>

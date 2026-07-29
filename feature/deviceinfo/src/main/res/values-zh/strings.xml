@@ -1,5 +1,169 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="device_info_title">设备详情</string>
-    <string name="device_info_description">查看系统版本、硬件能力和厂商信息</string>
-    <string name="device_info_not_implemented">设备信息 — 待实现</string>
+    <string name="device_info_description">查看设备标识、系统、处理器、内存、存储、显示、网络、电源与硬件能力</string>
+    <string name="navigate_back">返回</string>
+    <string name="refresh_device_info">刷新设备信息</string>
+    <string name="device_info_load_failed">无法加载设备信息</string>
+    <string name="retry">重试</string>
+    <string name="loading">正在加载…</string>
+
+    <string name="not_available">不可用</string>
+    <string name="not_reported_by_android">Android 未提供</string>
+    <string name="restricted_by_android">受 Android 限制</string>
+    <string name="unknown">未知</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="supported">支持</string>
+    <string name="not_supported">不支持</string>
+
+    <string name="system_section">系统</string>
+    <string name="processor_section">处理器</string>
+    <string name="memory_section">内存</string>
+    <string name="internal_storage_section">内部存储</string>
+    <string name="shared_storage_section">共享存储</string>
+    <string name="removable_storage_section">可移除存储</string>
+    <string name="display_section">显示</string>
+    <string name="network_section">网络</string>
+    <string name="power_section">电源与温控</string>
+    <string name="device_identity_section">设备标识</string>
+    <string name="capabilities_section">硬件能力</string>
+
+    <string name="android_version">Android 版本</string>
+    <string name="minimum_supported_android">最低支持 Android</string>
+    <string name="target_android_api">目标 Android API</string>
+    <string name="app_version">应用版本</string>
+    <string name="security_patch">安全补丁</string>
+    <string name="build_number">构建版本</string>
+    <string name="build_id">构建 ID</string>
+    <string name="build_type">构建类型</string>
+    <string name="kernel_version">内核版本</string>
+    <string name="bootloader">引导程序</string>
+    <string name="baseband_version">基带版本</string>
+    <string name="java_vm_version">运行时</string>
+    <string name="device_uptime">运行时长</string>
+
+    <string name="cpu_model">CPU 型号</string>
+    <string name="soc">SoC</string>
+    <string name="cpu_architecture">架构</string>
+    <string name="supported_abis">支持的 ABI</string>
+    <string name="cpu_cores">CPU 核心</string>
+    <string name="cpu_frequency_range">频率范围</string>
+    <string name="cpu_current_frequency">当前平均频率</string>
+    <string name="cpu_clusters">核心簇</string>
+    <string name="aggregate_peak_frequency">最大聚合频率</string>
+    <string name="aggregate_frequency_explanation">仅作为基于频率的硬件指标，不等同于 FLOPS 跑分。</string>
+    <string name="instruction_features">指令集特性</string>
+
+    <string name="total_memory">总内存</string>
+    <string name="memory_used">已占用</string>
+    <string name="memory_available">可用</string>
+    <string name="memory_format">内存类型</string>
+    <string name="low_memory_threshold">低内存阈值</string>
+    <string name="low_memory_state">低内存状态</string>
+    <string name="swap_usage">交换空间占用</string>
+    <string name="app_heap_limit">应用堆上限</string>
+
+    <string name="storage_used">已占用</string>
+    <string name="storage_available">可用</string>
+    <string name="storage_total">总大小</string>
+    <string name="file_system">文件系统</string>
+    <string name="removable">可移除</string>
+
+    <string name="resolution">分辨率</string>
+    <string name="density_dpi">密度</string>
+    <string name="logical_density">逻辑密度</string>
+    <string name="scaled_density">缩放密度</string>
+    <string name="physical_dpi">物理 DPI</string>
+    <string name="refresh_rate">刷新率</string>
+
+    <string name="network_status">状态</string>
+    <string name="network_transport">连接方式</string>
+    <string name="internet_validated">互联网已验证</string>
+    <string name="metered_network">按流量计费</string>
+    <string name="network_interface">网络接口</string>
+    <string name="ip_addresses">IP 地址</string>
+    <string name="gateway">网关</string>
+    <string name="dns_servers">DNS 服务器</string>
+    <string name="private_dns">私人 DNS</string>
+    <string name="connected">已连接</string>
+    <string name="disconnected">未连接</string>
+    <string name="transport_wifi">Wi-Fi</string>
+    <string name="transport_ethernet">以太网</string>
+    <string name="transport_cellular">移动网络</string>
+    <string name="transport_vpn">VPN</string>
+    <string name="transport_bluetooth">蓝牙</string>
+    <string name="transport_usb">USB</string>
+    <string name="transport_other">其他</string>
+
+    <string name="battery_level">电量</string>
+    <string name="battery_status">状态</string>
+    <string name="battery_health">健康状态</string>
+    <string name="power_source">供电来源</string>
+    <string name="battery_temperature">电池温度</string>
+    <string name="battery_voltage">电池电压</string>
+    <string name="thermal_status">温控状态</string>
+    <string name="battery_charging">充电中</string>
+    <string name="battery_discharging">放电中</string>
+    <string name="battery_full">已充满</string>
+    <string name="battery_not_charging">未充电</string>
+    <string name="battery_health_good">良好</string>
+    <string name="battery_health_overheat">过热</string>
+    <string name="battery_health_dead">失效</string>
+    <string name="battery_health_overvoltage">电压过高</string>
+    <string name="battery_health_cold">温度过低</string>
+    <string name="battery_health_failure">故障</string>
+    <string name="power_ac">交流电</string>
+    <string name="power_usb">USB</string>
+    <string name="power_wireless">无线</string>
+    <string name="power_dock">底座</string>
+    <string name="on_battery">电池</string>
+    <string name="thermal_none">正常</string>
+    <string name="thermal_light">轻度限频</string>
+    <string name="thermal_moderate">中度限频</string>
+    <string name="thermal_severe">重度限频</string>
+    <string name="thermal_critical">严重</string>
+    <string name="thermal_emergency">紧急</string>
+    <string name="thermal_shutdown">关机</string>
+
+    <string name="manufacturer">制造商</string>
+    <string name="brand">品牌</string>
+    <string name="model">型号</string>
+    <string name="product">产品代号</string>
+    <string name="device">设备代号</string>
+    <string name="board">主板</string>
+    <string name="hardware">硬件平台</string>
+    <string name="serial_number">序列号</string>
+    <string name="android_id">Android ID</string>
+    <string name="identifier_privacy_explanation">较新 Android 版本会限制序列号访问。Android ID 按应用签名与用户隔离。</string>
+
+    <string name="device_type">设备类型</string>
+    <string name="camera_count">摄像头</string>
+    <string name="sensor_count">传感器</string>
+    <string name="bluetooth">蓝牙</string>
+    <string name="nfc">NFC</string>
+    <string name="gps">GPS</string>
+    <string name="sensors">传感器列表</string>
+    <string name="device_type_automotive">车机</string>
+    <string name="device_type_television">电视</string>
+    <string name="device_type_tablet">平板</string>
+    <string name="device_type_phone">手机</string>
+    <string name="device_type_embedded">嵌入式设备</string>
+
+    <string name="android_version_value">Android %1$s（API %2$d）</string>
+    <string name="api_level_value">API %1$d</string>
+    <string name="app_version_value">%1$s（%2$d）</string>
+    <string name="core_count_value" tools:ignore="PluralsCandidate">%1$d 个在线 / 共 %2$d 个</string>
+    <string name="used_of_total_value">已用 %1$s / 共 %2$s</string>
+    <string name="percent_value">%1$d%%</string>
+    <string name="frequency_ghz_value">%1$.2f GHz</string>
+    <string name="frequency_mhz_value">%1$.0f MHz</string>
+    <string name="range_value">%1$s – %2$s</string>
+    <string name="cluster_value">%1$d × %2$s</string>
+    <string name="resolution_value">%1$d × %2$d px</string>
+    <string name="dpi_value" tools:ignore="PluralsCandidate">%1$d dpi</string>
+    <string name="physical_dpi_value">X %1$.1f / Y %2$.1f dpi</string>
+    <string name="refresh_rate_value">%1$.2f Hz</string>
+    <string name="temperature_value">%1$.1f °C</string>
+    <string name="voltage_value">%1$d mV</string>
+    <string name="uptime_value">%1$d 天 %2$d 小时 %3$d 分钟</string>
 </resources>
