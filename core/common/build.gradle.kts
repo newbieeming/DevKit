@@ -12,4 +12,6 @@ dependencies {
     api(libs.kotlinx.coroutines.android)
     // 日志
     api(libs.timber)
+
+    testImplementation(libs.junit)
 }

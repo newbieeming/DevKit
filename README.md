@@ -24,7 +24,7 @@
 |---|---|---|
 | 🎙️ **麦克风控制** | `feature:miccontrol` | 悬浮图标一键切换系统麦克风开 / 关 |
 | 🎵 **音频录制** | `feature:audiorecord` | PCM 录音、实时波形与本地录音文件管理 |
-| 📱 **应用管理** | `feature:appmanager` | 查看应用信息、跳转卸载 / 权限设置页 |
+| 📱 **应用管理** | `feature:appmanager` | 搜索与筛选已安装应用，查看 APK / 安装 / 清单信息并发起卸载 |
 | 📶 **网速悬浮显示** | `feature:networkspeed` | 常驻悬浮卡片实时展示上下行速率 |
 | 🖥️ **设备信息** | `feature:deviceinfo` | 查看系统版本、平台算力、厂商扩展属性 |
 | 🕐 **时间同步** | `feature:timesync` | 通过可配置悬浮窗实时展示设备当前时间 |
@@ -87,7 +87,7 @@ DevKit/
 |---|---|---|
 | `:core:model` | `jvm.library` | 纯 Kotlin 数据类（`AppInfo`、`RecordingFile`、`DeviceInfo`…），无 Android 依赖，可脱离设备单测 |
 | `:core:domain` | `jvm.library` | Repository **接口** + `UseCase`/`FlowUseCase` 基类，定义业务契约 |
-| `:core:common` | `android.library` + `hilt` | 协程调度器 DI（`@IoDispatcher` 等）、安全的 `getprop` 系统属性读取、扩展函数与 Timber 日志初始化 |
+| `:core:common` | `android.library` + `hilt` | 协程调度器 DI（`@IoDispatcher` 等）、应用包变化 Flow、安全的 `getprop` 系统属性读取、扩展函数与 Timber 日志初始化 |
 | `:core:database` | `android.library` + `hilt` | Room 数据库，管理录音元数据等本地持久化，Schema 导出至 `schemas/` 目录 |
 | `:core:datastore` | `android.library` + `hilt` | DataStore Preferences，存储用户配置（NTP 地址、悬浮窗开关…） |
 | `:core:network` | `android.library` + `hilt` | OkHttp + Kotlin 序列化，封装 NTP 同步与 HTTP 请求 |
@@ -118,7 +118,7 @@ feature:xxx/
 |---|---|---|
 | `:feature:miccontrol` | 可拖拽麦克风悬浮控制，支持卡片快捷启停与大小/初始位置/图标配置 | `MODIFY_AUDIO_SETTINGS` `SYSTEM_ALERT_WINDOW` |
 | `:feature:audiorecord` | PCM 录音、实时波形、播放、重命名与删除。兼容原 SoundCapture，文件保存在 `/sdcard/SoundCapture` | `RECORD_AUDIO`；Android 11+ 还需“所有文件访问” |
-| `:feature:appmanager` | 已安装应用列表（支持系统/用户应用过滤），跳转系统应用详情 / 卸载 / 权限页 | `QUERY_ALL_PACKAGES` `REQUEST_INSTALL_PACKAGES` |
+| `:feature:appmanager` | 已安装应用列表（搜索及系统/三方过滤）、APK 与清单详情、系统卸载 / 卸载更新 | `QUERY_ALL_PACKAGES` `REQUEST_DELETE_PACKAGES` |
 | `:feature:networkspeed` | 每秒计算设备上下行速率，通过可配置悬浮窗实时显示 | `SYSTEM_ALERT_WINDOW` `ACCESS_NETWORK_STATE` |
 | `:feature:deviceinfo` | 展示 `DeviceInfo`（型号、Android 版本、CPU ABI、RAM、厂商属性）。车机扩展属性通过 `customProperties: Map<String, String>` 注入 | — |
 | `:feature:timesync` | 根据系统 12/24 小时制实时显示当前时间，支持悬浮窗配置 | `SYSTEM_ALERT_WINDOW` |
