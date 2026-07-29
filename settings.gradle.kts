@@ -42,3 +42,4 @@ include(":feature:appmanager")   // 应用管理（信息/卸载/权限跳转）
 include(":feature:networkspeed") // 网速悬浮显示
 include(":feature:deviceinfo")   // 设备/车机信息（版本、算力等）
 include(":feature:timesync")     // 时间显示（可配置 NTP 服务器）
+include(":feature:stopwatch")    // 秒表（可暂停、归零的悬浮计时器）

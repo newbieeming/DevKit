@@ -1,0 +1,18 @@
+<resources>
+    <string name="stopwatch_title">秒表</string>
+    <string name="stopwatch_description">通过可移动悬浮窗记录经过时间，并可随时暂停或归零</string>
+    <string name="stopwatch">秒表</string>
+    <string name="start_stopwatch_overlay">显示秒表悬浮窗</string>
+    <string name="stop_stopwatch_overlay">隐藏秒表悬浮窗</string>
+    <string name="start_stopwatch">开始或继续计时</string>
+    <string name="pause_stopwatch">暂停计时</string>
+    <string name="reset_stopwatch">秒表归零</string>
+    <string name="stop_and_reset_stopwatch">停止并归零</string>
+    <string name="stopwatch_status">秒表状态</string>
+    <string name="stopwatch_status_running">计时中</string>
+    <string name="stopwatch_status_paused">已暂停</string>
+    <string name="stopwatch_status_reset">已停止并归零</string>
+    <string name="stopwatch_notification_channel">秒表悬浮窗</string>
+    <string name="stopwatch_notification_title">秒表正在显示</string>
+    <string name="stopwatch_notification_text">可通过悬浮控件暂停或归零</string>
+</resources>

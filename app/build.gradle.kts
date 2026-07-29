@@ -50,6 +50,7 @@ dependencies {
     implementation(project(":feature:networkspeed"))
     implementation(project(":feature:deviceinfo"))
     implementation(project(":feature:timesync"))
+    implementation(project(":feature:stopwatch"))
 
     // ── 导航 ──────────────────────────────────────────────────────────────────
     implementation(libs.androidx.navigation.compose)

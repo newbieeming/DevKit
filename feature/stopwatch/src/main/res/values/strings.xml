@@ -1,0 +1,18 @@
+<resources>
+    <string name="stopwatch_title">Stopwatch</string>
+    <string name="stopwatch_description">Track elapsed time from a movable overlay, with pause and reset controls</string>
+    <string name="stopwatch">Stopwatch</string>
+    <string name="start_stopwatch_overlay">Show stopwatch overlay</string>
+    <string name="stop_stopwatch_overlay">Hide stopwatch overlay</string>
+    <string name="start_stopwatch">Start or resume stopwatch</string>
+    <string name="pause_stopwatch">Pause stopwatch</string>
+    <string name="reset_stopwatch">Reset stopwatch</string>
+    <string name="stop_and_reset_stopwatch">Stop and reset</string>
+    <string name="stopwatch_status">Stopwatch status</string>
+    <string name="stopwatch_status_running">Running</string>
+    <string name="stopwatch_status_paused">Paused</string>
+    <string name="stopwatch_status_reset">Stopped and reset</string>
+    <string name="stopwatch_notification_channel">Stopwatch overlay</string>
+    <string name="stopwatch_notification_title">Stopwatch is displayed</string>
+    <string name="stopwatch_notification_text">Pause or reset it from the floating controls</string>
+</resources>

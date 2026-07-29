@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  一款面向车机 / Android 设备的开发者工具箱，集成麦克风控制、音频录制、应用管理、网速监控、设备信息查看及时间同步等常用功能。
+  一款面向车机 / Android 设备的开发者工具箱，集成麦克风控制、音频录制、应用管理、网速监控、设备信息查看、时间显示及悬浮秒表等常用功能。
 </p>
 
 <p align="center">
@@ -28,6 +28,7 @@
 | 📶 **网速悬浮显示** | `feature:networkspeed` | 常驻悬浮卡片实时展示上下行速率 |
 | 🖥️ **设备信息** | `feature:deviceinfo` | 查看系统版本、平台算力、厂商扩展属性 |
 | 🕐 **时间同步** | `feature:timesync` | 通过可配置悬浮窗实时展示设备当前时间 |
+| ⏱️ **秒表** | `feature:stopwatch` | 通过可移动悬浮窗计时，并支持开始、暂停和归零 |
 
 ---
 
@@ -39,7 +40,7 @@
 ┌──────────────────────────────────┐
 │              :app                │  ← 组装层：导航图 + DI 入口
 ├──────────────────────────────────┤
-│  :feature:*  （6 个功能模块）     │  ← 功能层：UI / ViewModel / Navigation
+│  :feature:*  （7 个功能模块）     │  ← 功能层：UI / ViewModel / Navigation
 ├──────────────────────────────────┤
 │  :core:*     （6 个基础模块）     │  ← 基础设施层：通用能力 / UI 组件
 ├──────────────────────────────────┤
@@ -116,6 +117,7 @@ feature:xxx/
 | `:feature:networkspeed` | 每秒计算设备上下行速率，通过可配置悬浮窗实时显示 | `SYSTEM_ALERT_WINDOW` `ACCESS_NETWORK_STATE` |
 | `:feature:deviceinfo` | 展示 `DeviceInfo`（型号、Android 版本、CPU ABI、RAM、厂商属性）。车机扩展属性通过 `customProperties: Map<String, String>` 注入 | — |
 | `:feature:timesync` | 根据系统 12/24 小时制实时显示当前时间，支持悬浮窗配置 | `SYSTEM_ALERT_WINDOW` |
+| `:feature:stopwatch` | 可暂停、继续和归零的悬浮秒表，支持状态、颜色与大小配置 | `SYSTEM_ALERT_WINDOW` |
 
 ### Feature 入口、导航与权限
 
@@ -172,7 +174,7 @@ cd DevKit
 
 ### 悬浮窗权限
 
-首次使用 **麦克风控制**、**网速悬浮显示** 或 **时间悬浮显示** 时，应用会引导用户跳转系统设置开启“显示在其他应用上层”权限（`SYSTEM_ALERT_WINDOW`）。
+首次使用 **麦克风控制**、**网速悬浮显示**、**时间悬浮显示** 或 **秒表** 时，应用会引导用户跳转系统设置开启“显示在其他应用上层”权限（`SYSTEM_ALERT_WINDOW`）。
 
 ---
 
