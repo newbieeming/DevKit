@@ -72,6 +72,7 @@ dependencies {
     implementation(project(":feature:deviceinfo"))
     implementation(project(":feature:timesync"))
     implementation(project(":feature:stopwatch"))
+    implementation(project(":feature:systemquery"))
 
     // ── 导航 ──────────────────────────────────────────────────────────────────
     implementation(libs.androidx.navigation.compose)

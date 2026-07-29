@@ -1,0 +1,31 @@
+<resources>
+    <string name="system_query_title">系统值查询</string>
+    <string name="system_query_description">使用正则表达式查找匹配的系统属性和 Settings 值</string>
+    <string name="navigate_back">返回</string>
+    <string name="regex_query">键名正则表达式</string>
+    <string name="regex_query_hint">使用 | 匹配多个条件，例如：persist|ro\.product</string>
+    <string name="clear_query">清空查询</string>
+    <string name="quick_input">快捷输入</string>
+    <string name="query_shortcut_persist">persist</string>
+    <string name="query_shortcut_ro">ro</string>
+    <string name="query_shortcut_system">system</string>
+    <string name="query_shortcut_dot">.</string>
+    <string name="query_shortcut_or">|</string>
+    <string name="query_shortcut_underscore">_</string>
+    <string name="query_scope">查询来源</string>
+    <string name="query_scope_all">全部来源</string>
+    <string name="source_system_properties">系统属性（getprop）</string>
+    <string name="source_settings_global">Settings.Global</string>
+    <string name="source_settings_system">Settings.System</string>
+    <string name="source_settings_secure">Settings.Secure</string>
+    <string name="run_query">查询</string>
+    <string name="query_history">最近查询</string>
+    <string name="clear_query_history">清空查询历史</string>
+    <string name="query_result_count">匹配 %1$d 项</string>
+    <string name="empty_value">（空值）</string>
+    <string name="no_query_results">没有找到匹配的键</string>
+    <string name="query_sources_unavailable">无法读取：%1$s</string>
+    <string name="query_error_empty">请输入键名正则表达式</string>
+    <string name="query_error_invalid_regex">正则表达式无效</string>
+    <string name="query_error_failed">无法完成查询</string>
+</resources>

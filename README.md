@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  一款面向车机 / Android 设备的开发者工具箱，集成麦克风控制、音频录制、应用管理、网速监控、设备信息查看、时间显示及悬浮秒表等常用功能。
+  一款面向 Android 设备的开发者工具箱，集成麦克风控制、音频录制、应用管理、网速监控、设备信息查看、时间显示、悬浮秒表及系统值查询等常用功能。
 </p>
 
 <p align="center">
@@ -29,6 +29,7 @@
 | 🖥️ **设备信息** | `feature:deviceinfo` | 查看系统版本、平台算力、厂商扩展属性 |
 | 🕐 **时间同步** | `feature:timesync` | 通过可配置悬浮窗实时展示设备当前时间 |
 | ⏱️ **秒表** | `feature:stopwatch` | 通过可移动悬浮窗计时，并支持开始、暂停和归零 |
+| 🔎 **系统值查询** | `feature:systemquery` | 使用正则表达式查询系统属性及 Settings 中的值，并记忆查询历史 |
 
 ---
 
@@ -118,6 +119,7 @@ feature:xxx/
 | `:feature:deviceinfo` | 展示 `DeviceInfo`（型号、Android 版本、CPU ABI、RAM、厂商属性）。车机扩展属性通过 `customProperties: Map<String, String>` 注入 | — |
 | `:feature:timesync` | 根据系统 12/24 小时制实时显示当前时间，支持悬浮窗配置 | `SYSTEM_ALERT_WINDOW` |
 | `:feature:stopwatch` | 可暂停、继续和归零的悬浮秒表，支持状态、颜色与大小配置 | `SYSTEM_ALERT_WINDOW` |
+| `:feature:systemquery` | 按正则查询系统属性以及 Global、System、Secure Settings，可选择全部或指定来源并保存查询历史 | — |
 
 ### Feature 入口、导航与权限
 

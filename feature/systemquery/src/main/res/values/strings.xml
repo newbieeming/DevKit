@@ -1,0 +1,31 @@
+<resources>
+    <string name="system_query_title">System value query</string>
+    <string name="system_query_description">Find matching system properties and Settings values with regular expressions</string>
+    <string name="navigate_back">Navigate back</string>
+    <string name="regex_query">Key regular expression</string>
+    <string name="regex_query_hint">Use | to match multiple patterns, for example: persist|ro\.product</string>
+    <string name="clear_query">Clear query</string>
+    <string name="quick_input">Quick input</string>
+    <string name="query_shortcut_persist">persist</string>
+    <string name="query_shortcut_ro">ro</string>
+    <string name="query_shortcut_system">system</string>
+    <string name="query_shortcut_dot">.</string>
+    <string name="query_shortcut_or">|</string>
+    <string name="query_shortcut_underscore">_</string>
+    <string name="query_scope">Query source</string>
+    <string name="query_scope_all">All sources</string>
+    <string name="source_system_properties">System properties (getprop)</string>
+    <string name="source_settings_global">Settings.Global</string>
+    <string name="source_settings_system">Settings.System</string>
+    <string name="source_settings_secure">Settings.Secure</string>
+    <string name="run_query">Query</string>
+    <string name="query_history">Recent queries</string>
+    <string name="clear_query_history">Clear query history</string>
+    <string name="query_result_count">%1$d matches</string>
+    <string name="empty_value">(empty)</string>
+    <string name="no_query_results">No matching keys were found</string>
+    <string name="query_sources_unavailable">Couldn\'t read: %1$s</string>
+    <string name="query_error_empty">Enter a key regular expression</string>
+    <string name="query_error_invalid_regex">The regular expression is invalid</string>
+    <string name="query_error_failed">The query couldn\'t be completed</string>
+</resources>
