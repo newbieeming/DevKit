@@ -207,6 +207,9 @@ private fun DeviceInfoContent(
             IdentityCard(identity)
         }
         item {
+            DisplayCard(display)
+        }
+        item {
             SystemCard(system)
         }
         item {
@@ -241,9 +244,6 @@ private fun DeviceInfoContent(
                 icon = Icons.Default.Storage,
                 isLoading = state.isLoading,
             )
-        }
-        item {
-            DisplayCard(display)
         }
         item {
             state.network?.let { NetworkCard(it) } ?: SectionPlaceholderCard(
