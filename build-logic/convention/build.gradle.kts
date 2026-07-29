@@ -52,7 +52,7 @@ gradlePlugin {
             id = "devkit.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
-        // 纯 JVM 库（core:model、core:domain 使用）
+        // 纯 JVM 库（core:model 使用）
         register("jvmLibrary") {
             id = "devkit.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"

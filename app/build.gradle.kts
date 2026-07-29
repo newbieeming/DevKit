@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId = "com.newbieeming.devkit"
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 1_000_000
+        versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

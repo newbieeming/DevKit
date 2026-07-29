@@ -32,7 +32,7 @@ build-logic/convention ──────────────► 各模块�
 - `:app` 可以依赖 `:feature:*` 与必要的 `:core:*`，但只负责组装，不实现 Feature 业务。
 - `:feature:*` 可以依赖 `:core:*`；Feature 之间**禁止直接依赖**。
 - `:core:*` 禁止依赖 `:feature:*` 或 `:app`。
-- 跨 Feature 协作通过 `:core:domain` 中的 Repository 契约或其他合适的 core 契约完成。
+- 跨 Feature 协作通过已有多个消费者的合适 core 契约完成；不要预建无人使用的分层模块。
 - 所有依赖版本集中在 `gradle/libs.versions.toml`；使用现有 convention plugin，禁止在模块 Gradle 文件中硬编码版本号。
 
 ### Core 模块职责
@@ -42,15 +42,11 @@ build-logic/convention ──────────────► 各模块�
 | 模块 | 应放内容 |
 |---|---|
 | `:core:model` | 无 Android 依赖的共享数据模型 |
-| `:core:domain` | Repository 接口、UseCase、跨 Feature 的业务契约 |
 | `:core:common` | 调度器限定符、通用扩展、日志等基础工具 |
-| `:core:database` / `:core:datastore` / `:core:network` | Room、DataStore、网络等通用数据源能力 |
-| `:core:data` | 聚合通用数据源的 Repository 实现 |
+| `:core:datastore` | 多个 Feature 共用的 DataStore 持久化能力 |
 | `:core:permissions` | 权限常量、授权状态及通用权限判断 |
-| `:core:service` | 悬浮窗/后台 Service 的通用基类和生命周期封装 |
 | `:core:designsystem` | Material 3 设计令牌、基础主题与排版 |
-| `:core:ui` | 跨 Feature 复用的 Compose 组件、`FeatureEntry`、通用权限请求 UI 逻辑 |
-| `:core:testing` | Fake、测试调度器与测试辅助能力 |
+| `:core:ui` | 跨 Feature 复用的 Compose 组件、`FeatureEntry`、通用权限请求 UI 与悬浮窗生命周期封装 |
 
 Feature 专属的数据模型、Repository、页面和逻辑保留在该 Feature 内；不要因为“可能以后复用”而提前搬到 core。已有至少两个消费者，或确实属于系统级统一规则时，才抽取到 core。
 
