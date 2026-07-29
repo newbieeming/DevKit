@@ -1,3 +1,7 @@
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+
 plugins {
     alias(libs.plugins.devkit.android.application.compose)
     alias(libs.plugins.devkit.android.hilt)
@@ -42,6 +46,23 @@ android {
     }
 }
 
+androidComponents {
+    onVariants { variant ->
+        variant.manifestPlaceholders.put("BuildTime", buildTime)
+        variant.manifestPlaceholders.put("GitCommitId", gitCommitId)
+
+        if (variant.buildType == "release") {
+            variant.outputs.forEach { output ->
+                output.outputFileName.set(
+                    variant.applicationId.zip(output.versionName) { applicationId, versionName ->
+                        "$applicationId-$versionName.apk"
+                    },
+                )
+            }
+        }
+    }
+}
+
 dependencies {
     // ── feature 模块全量接入（由 app 负责组装）───────────────────────────────
     implementation(project(":feature:miccontrol"))
@@ -65,4 +86,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+
+val buildTime = providers.provider {
+    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss XXX")
+        .withZone(ZoneId.of("Asia/Shanghai"))
+        .format(Instant.now())
+}
+val gitCommitId = providers.exec {
+    commandLine("git", "rev-parse", "--short=8", "HEAD")
+    isIgnoreExitValue = true
+}.standardOutput.asText.map { output ->
+    output.trim().ifEmpty { "unknown" }
 }

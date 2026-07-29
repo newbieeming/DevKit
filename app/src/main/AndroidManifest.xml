@@ -13,6 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DevKit">
 
+        <meta-data
+            android:name="BUILD_TIME"
+            android:value="${BuildTime}" />
+        <meta-data
+            android:name="GIT_COMMIT_ID"
+            android:value="${GitCommitId}" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
